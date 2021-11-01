@@ -14,6 +14,7 @@ namespace Avaliacao.Models
         {
             _orders = new List<OrderService>();
         }
+        public IEnumerable<OrderService> GetAllOrders() => _orders;
         /// <summary>
         /// Make a list from selected inspector
         /// </summary>
