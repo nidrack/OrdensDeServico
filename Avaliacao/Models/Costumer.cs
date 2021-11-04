@@ -15,16 +15,18 @@ namespace Avaliacao.Models
             _orders = new List<OrderService>();
         }
         public IEnumerable<OrderService> GetAllOrders() => _orders;
-        /// <summary>
-        /// Make a list from selected inspector
-        /// </summary>
-        /// <param name="inspector"></param>
-        /// <returns></returns>
-        public IEnumerable<OrderService> GetOrderByInspector(string inspector)
-        {
-            return _orders
-                .Where(x => x.Inspector.Name == inspector);
-        }
+
+        ///// <summary>
+        ///// Make a list from selected inspector
+        ///// </summary>
+        ///// <param name="inspector"></param>
+        ///// <returns></returns>
+        //public IEnumerable<OrderService> GetOrderByInspector(string inspector)
+        //{
+        //    return _orders
+        //        .Where(x => x.Inspector.Name == inspector);
+        //}
+
         /// <summary>
         /// Verifies if an order inserted have the same value in key property in the existing list of orders
         /// Utilize Conflicts() method from OrderService

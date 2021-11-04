@@ -10,7 +10,6 @@
     Height="450" 
     Width="800">
     <Grid>
-        <views:CreateOrderView />
-        <views:ListOrderView />
+        <views:ListOrderView DataContext="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

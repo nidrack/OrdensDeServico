@@ -9,7 +9,6 @@ namespace Avaliacao.Models
 {
     public class OrderService
     {
-        public Inspector Inspector { get; }
         public int Id { get; set; }
         public string Cod { get; set; }
         public DateTime InitialDate { get; set; }
@@ -19,9 +18,8 @@ namespace Avaliacao.Models
         public OSType Type { get; set; }
         public double TotalPrice => ServicePrice + TravelPrice;
         public DateTime FinalDate => InitialDate.AddDays(7);
-        public OrderService(Inspector inspector, int id, string cod, DateTime initialDate, double servicePrice, double travelPrice, string city, OSType type)
+        public OrderService(int id, string cod, DateTime initialDate, double servicePrice, double travelPrice, string city, OSType type)
         {
-            Inspector = inspector;
             Id = id;
             Cod = cod;
             InitialDate = initialDate;

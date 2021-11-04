@@ -37,35 +37,63 @@
 
         <Grid Grid.Row="1">
 
-            <ListView Margin="15,10,15,10">
-                <ListViewItem />
-                <ListViewItem />
-                <ListViewItem />
-                <ListViewItem />
-
+            <ListView Margin="15,10,15,10" ItemsSource="{Binding Orders}">
                 <ListView.View>
                     <GridView>
                         
                         <GridViewColumn Header="ID">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="1231" />
+                                    <TextBlock Text="{Binding Id}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="COD">
+                        <GridViewColumn Header="Código">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="ASDSAF700.000" />
+                                    <TextBlock Text="{Binding Cod}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Total">
+                        <GridViewColumn Header="Data de criação">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="435.00" />
+                                    <TextBlock Text="{Binding InitialDate}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                        
+                        <GridViewColumn Header="Valor do serviço">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ServicePrice}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>                        
+                        
+                        <GridViewColumn Header="Valor do deslocamento">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TravelPrice}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>                        
+                        
+                        <GridViewColumn Header="Cidade">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding City}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>                        
+                        
+                        <GridViewColumn Header="Tipo">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Type}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

@@ -16,10 +16,10 @@ namespace Avaliacao.Models
             _costumer = new Costumer();
         }
 
-        public IEnumerable<OrderService> GetOrderByInspector(string inspectorName)
-        {
-            return _costumer.GetOrderByInspector(inspectorName);
-        }
+        //public IEnumerable<OrderService> GetOrderByInspector(string inspectorName)
+        //{
+        //    return _costumer.GetOrderByInspector(inspectorName);
+        //}
 
         public void CreateOrderService (OrderService order)
         {

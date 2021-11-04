@@ -35,8 +35,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*" />
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="10*" />
+            <RowDefinition Height="0*" />
+            <RowDefinition Height="0*" />
             <RowDefinition Height="5*" />
             <RowDefinition Height="30*" />
             <RowDefinition Height="5*" />
@@ -48,41 +48,6 @@
                 FontSize="16"
                 HorizontalAlignment="Center"
                 Content="Cadastrar nova OS"/>
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <Label 
-                FontSize="16"
-                HorizontalAlignment="Center"
-                Content="Vistoriador"/>
-        </Grid>
-
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <StackPanel Margin="50,0,20,0">
-                    <Label 
-                        HorizontalAlignment="Left"
-                        Content="Id do vistoriador"/>
-                    <TextBox 
-                        Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Column="1">
-                <StackPanel Margin="20,0,50,0">
-                    <Label 
-                        HorizontalAlignment="Left"
-                        Content="Nome do vistoriador"/>
-                    <TextBox 
-                        Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
-                </StackPanel>
-            </Grid>
-
         </Grid>
 
         <Grid Grid.Row="3">
@@ -105,17 +70,18 @@
                         Content="Id"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
+                        Text="{Binding NotifyOnValidationError, UpdateSourceTrigger=PropertyChanged}" />
                     <Label 
                         HorizontalAlignment="Left"
                         Content="Código"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
+                        Text="{Binding Cod, UpdateSourceTrigger=PropertyChanged}" />
                     <Label 
                         HorizontalAlignment="Left"
                         Content="Tipo" />
-                    <ComboBox />
+                    <ComboBox 
+                        ItemsSource="{Binding Type, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
@@ -125,19 +91,19 @@
                         Content="Valor do serviço"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
+                        Text="{Binding ServicePrice, UpdateSourceTrigger=PropertyChanged}" />
                     <Label 
                         HorizontalAlignment="Left"
                         Content="Valor do deslocamento"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
+                        Text="{Binding TravelPrice, UpdateSourceTrigger=PropertyChanged}" />
                     <Label 
                         HorizontalAlignment="Left"
                         Content="Valor Total"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
+                        Text="{Binding TotalPrice}" />
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="2">
@@ -147,26 +113,20 @@
                         Content="Cidade"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
+                        Text="{Binding City, UpdateSourceTrigger=PropertyChanged}" />
                     <Label 
                         HorizontalAlignment="Left"
                         Content="Data inicial"/>
-                    <DatePicker />
+                    <DatePicker 
+                        SelectedDate="{Binding InitialDate, UpdateSourceTrigger=PropertyChanged}"/>
                     <Label 
                         HorizontalAlignment="Left"
                         Content="Data de vencimento"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="Teste" />
+                        Text="{Binding FinalDate}" />
                 </StackPanel>
             </Grid>
-        </Grid>
-
-        <Grid Grid.Row="5">
-            <Label
-                FontSize="16"
-                HorizontalAlignment="Center"
-                Content="Não preciso mais desse label"/>
         </Grid>
 
         <Grid Grid.Row="6">
@@ -178,7 +138,12 @@
                 Orientation="Horizontal"
                 HorizontalAlignment="Left"
                 Margin="330,0,0,0" Grid.ColumnSpan="2">
-                <Button Width="120" Height="40" Margin="10,0,10,0" Content="Salvar"/>
+                <Button 
+                    Width="120" 
+                    Height="40" 
+                    Margin="10,0,10,0" 
+                    Content="Salvar"
+                    Command="{Binding SubmitCommand}"/>
             </StackPanel>
 
         </Grid>
