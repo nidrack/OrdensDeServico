@@ -1,4 +1,6 @@
-﻿using Avaliacao.Models.Enums;
+﻿using Avaliacao.Commands;
+using Avaliacao.Models;
+using Avaliacao.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +10,10 @@ using System.Windows.Input;
 
 namespace Avaliacao.ViewModels
 {
-    class CreateOrderViewModel : BindableBase
+    public class CreateOrderViewModel : BindableBase
     {
+        private readonly OrderService _orderService;
+
         private int _id;
         public int Id
         {
@@ -36,9 +40,10 @@ namespace Avaliacao.ViewModels
                 OnPropertyChanged(nameof(Cod));
             }
         }
+        public Array enumList => Enum.GetValues(typeof(OrderServiceType));
 
-        private OSType _type;
-        public OSType Type
+        private OrderServiceType _type;
+        public OrderServiceType Type
         {
             get
             {
@@ -46,7 +51,7 @@ namespace Avaliacao.ViewModels
             }
             set
             {
-                _type = value;
+                _type = (OrderServiceType)value;
                 OnPropertyChanged(nameof(Type));
             }
         }
@@ -93,7 +98,7 @@ namespace Avaliacao.ViewModels
             }
         }
 
-        private DateTime _initialdate;
+        private DateTime _initialdate = DateTime.Now;
         public DateTime InitialDate
         {
             get
@@ -106,8 +111,7 @@ namespace Avaliacao.ViewModels
                 OnPropertyChanged(nameof(InitialDate));
             }
         }
-
-        private double _totalValue;
+        private double _totalValue ;
         public double TotalValue
         {
             get
@@ -120,10 +124,9 @@ namespace Avaliacao.ViewModels
                 OnPropertyChanged(nameof(TotalValue));
             }
         }
-
         private DateTime _finalDate;
         public DateTime FinalDate
-        {   
+        {
             get
             {
                 return _finalDate;
@@ -134,6 +137,12 @@ namespace Avaliacao.ViewModels
                 OnPropertyChanged(nameof(FinalDate));
             }
         }
+
         public ICommand SubmitCommand { get; }
+        public CreateOrderViewModel(Company company)
+        {
+            SubmitCommand = new SubmitCommand(this, company);
+        }
+
     }
 }

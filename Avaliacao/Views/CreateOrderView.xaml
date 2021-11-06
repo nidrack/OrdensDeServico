@@ -70,7 +70,7 @@
                         Content="Id"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="{Binding NotifyOnValidationError, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" />
                     <Label 
                         HorizontalAlignment="Left"
                         Content="Código"/>
@@ -80,8 +80,9 @@
                     <Label 
                         HorizontalAlignment="Left"
                         Content="Tipo" />
-                    <ComboBox 
-                        ItemsSource="{Binding Type, UpdateSourceTrigger=PropertyChanged}" />
+                    <ComboBox x:Name="cbType" 
+                        ItemsSource="{Binding enumList}"
+                        SelectedItem="{Binding Type, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
@@ -103,7 +104,7 @@
                         Content="Valor Total"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="{Binding TotalPrice}" />
+                        Text="{Binding TotalValue, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="2">

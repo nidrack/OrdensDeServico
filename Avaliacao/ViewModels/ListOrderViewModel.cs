@@ -18,10 +18,10 @@ namespace Avaliacao.ViewModels
         {
             _orders = new ObservableCollection<OrderServiceViewModel>();
 
-            _orders.Add(new OrderServiceViewModel(new OrderService(01, "7375.0301.0002300232", new DateTime(2021, 10, 06), 430, 37, "Goiania", Models.Enums.OSType.A413)));
-            _orders.Add(new OrderServiceViewModel(new OrderService(02, "7375.0301.0002312232", new DateTime(2021, 10, 07), 367, 37, "Goiania", Models.Enums.OSType.A414)));
-            _orders.Add(new OrderServiceViewModel(new OrderService(03, "7375.0301.0002354232", new DateTime(2021, 10, 08), 367, 37, "Goiania", Models.Enums.OSType.A414)));
-            _orders.Add(new OrderServiceViewModel(new OrderService(04, "7375.0301.0002320232", new DateTime(2021, 10, 09), 350, 37, "Goiania", Models.Enums.OSType.A412)));
+            _orders.Add(new OrderServiceViewModel(new OrderService(01, "7375.0301.0002300232", new DateTime(2021, 10, 06), 430, 37, "Goiania", Models.Enums.OrderServiceType.A413)));
+            _orders.Add(new OrderServiceViewModel(new OrderService(02, "7375.0301.0002312232", new DateTime(2021, 10, 07), 367, 37, "Goiania", Models.Enums.OrderServiceType.A414)));
+            _orders.Add(new OrderServiceViewModel(new OrderService(03, "7375.0301.0002354232", new DateTime(2021, 10, 08), 367, 37, "Goiania", Models.Enums.OrderServiceType.A414)));
+            _orders.Add(new OrderServiceViewModel(new OrderService(04, "7375.0301.0002320232", new DateTime(2021, 10, 09), 350, 37, "Goiania", Models.Enums.OrderServiceType.A412)));
         }
     }
 }

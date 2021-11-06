@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Avaliacao.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Avaliacao.Views
         public CreateOrderView()
         {
             InitializeComponent();
+            
         }
     }
 }

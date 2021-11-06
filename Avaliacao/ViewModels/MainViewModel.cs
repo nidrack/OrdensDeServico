@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Avaliacao.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace Avaliacao.ViewModels
     {
         public BindableBase CurrentViewModel { get; }
 
-        public MainViewModel()
+        public MainViewModel(Company company)
         {
-            CurrentViewModel = new ListOrderViewModel();
+            CurrentViewModel = new CreateOrderViewModel(company);
         }
     }
 }

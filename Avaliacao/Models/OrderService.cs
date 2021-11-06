@@ -1,5 +1,6 @@
 ﻿using Avaliacao.Models.Enums;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,10 @@ namespace Avaliacao.Models
         public double ServicePrice { get; set; }
         public double TravelPrice { get; set; }
         public string City { get; set; }
-        public OSType Type { get; set; }
+        public OrderServiceType Type { get; set; }
         public double TotalPrice => ServicePrice + TravelPrice;
         public DateTime FinalDate => InitialDate.AddDays(7);
-        public OrderService(int id, string cod, DateTime initialDate, double servicePrice, double travelPrice, string city, OSType type)
+        public OrderService(int id, string cod, DateTime initialDate, double servicePrice, double travelPrice, string city, OrderServiceType type)
         {
             Id = id;
             Cod = cod;
@@ -35,5 +36,15 @@ namespace Avaliacao.Models
         /// <param name="order"></param>
         /// <returns></returns>
         public bool Conflicts(OrderService order) => order.Cod.Equals(Cod);
+        public static IList EnumToList()
+        {
+            List<OrderServiceType> list = new();
+            Array enumValues = Enum.GetValues(typeof(OrderServiceType));
+            foreach (OrderServiceType item in enumValues)
+            {
+                list.Add(item);
+            }
+            return list;
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace Avaliacao.ViewModels
         public double ServicePrice => _orderService.ServicePrice;
         public double TravelPrice => _orderService.TravelPrice;
         public string City => _orderService.City;
-        public OSType Type => _orderService.Type;
+        public OrderServiceType Type => _orderService.Type;
 
         public OrderServiceViewModel(Models.OrderService orderService)
         {
