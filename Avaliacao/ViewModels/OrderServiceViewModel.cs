@@ -14,10 +14,12 @@ namespace Avaliacao.ViewModels
         public int Id => _orderService.Id;
         public string Cod => _orderService.Cod;
         public string InitialDate => _orderService.InitialDate.ToString("d");
-        public double ServicePrice => _orderService.ServicePrice;
+                public double ServicePrice => _orderService.ServicePrice;
         public double TravelPrice => _orderService.TravelPrice;
         public string City => _orderService.City;
         public OrderServiceType Type => _orderService.Type;
+        public double TotalPrice => _orderService.TotalPrice;
+        public string FinalDate => _orderService.FinalDate.ToString("d");
 
         public OrderServiceViewModel(Models.OrderService orderService)
         {

@@ -1,5 +1,6 @@
 ﻿using Avaliacao.Exceptions;
 using Avaliacao.Models;
+using Avaliacao.Services;
 using Avaliacao.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,15 @@ namespace Avaliacao.Commands
     {
         private readonly CreateOrderViewModel _createOrderViewModel;
         private readonly Company _company;
+        private readonly NavigationService _orderViewNavigationService;
 
-        public SubmitCommand(CreateOrderViewModel createOrderViewModel, Company company)
+        public SubmitCommand(CreateOrderViewModel createOrderViewModel,
+            Company company,
+            NavigationService orderViewNavigationService)
         {
             _createOrderViewModel = createOrderViewModel;
             _company = company;
-
+            _orderViewNavigationService = orderViewNavigationService;
             _createOrderViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
 
@@ -53,6 +57,8 @@ namespace Avaliacao.Commands
                     "Sucesso",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
+
+                _orderViewNavigationService.Navigate();
             }
             catch (ExistingOrderException)
             {

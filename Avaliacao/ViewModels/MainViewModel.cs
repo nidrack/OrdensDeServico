@@ -1,4 +1,5 @@
 ﻿using Avaliacao.Models;
+using Avaliacao.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,21 @@ namespace Avaliacao.ViewModels
 {
     class MainViewModel : BindableBase 
     {
-        public BindableBase CurrentViewModel { get; }
+        private readonly NavigationStore _navigationStore;
 
-        public MainViewModel(Company company)
+        public MainViewModel(NavigationStore navigationStore)
         {
-            CurrentViewModel = new CreateOrderViewModel(company);
+            _navigationStore = navigationStore;
+
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
+        }
+
+        public BindableBase CurrentViewModel => _navigationStore.CurrentViewModel;
+
     }
 }

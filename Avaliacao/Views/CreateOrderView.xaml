@@ -104,7 +104,7 @@
                         Content="Valor Total"/>
                     <TextBox 
                         Template="{StaticResource TextBoxBaseControlTemplate}"
-                        Text="{Binding TotalValue, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="2">
@@ -145,6 +145,12 @@
                     Margin="10,0,10,0" 
                     Content="Salvar"
                     Command="{Binding SubmitCommand}"/>
+                <Button 
+                    Width="120" 
+                    Height="40" 
+                    Margin="10,0,10,0" 
+                    Content="Ver ordens"
+                    Command="{Binding ListOrderCommand}"/>
             </StackPanel>
 
         </Grid>

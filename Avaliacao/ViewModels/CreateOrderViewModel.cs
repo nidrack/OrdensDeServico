@@ -1,6 +1,8 @@
 ﻿using Avaliacao.Commands;
 using Avaliacao.Models;
 using Avaliacao.Models.Enums;
+using Avaliacao.Services;
+using Avaliacao.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,6 @@ namespace Avaliacao.ViewModels
 {
     public class CreateOrderViewModel : BindableBase
     {
-        private readonly OrderService _orderService;
-
         private int _id;
         public int Id
         {
@@ -66,6 +66,7 @@ namespace Avaliacao.ViewModels
             set
             {
                 _servicePrice = value;
+                OnPriceChanged();
                 OnPropertyChanged(nameof(ServicePrice));
             }
         }
@@ -80,6 +81,7 @@ namespace Avaliacao.ViewModels
             set
             {
                 _travelPrice = value;
+                OnPriceChanged();
                 OnPropertyChanged(nameof(TravelPrice));
             }
         }
@@ -108,24 +110,25 @@ namespace Avaliacao.ViewModels
             set
             {
                 _initialdate = value;
+                OnDateChanged();
                 OnPropertyChanged(nameof(InitialDate));
             }
         }
-        private double _totalValue ;
-        public double TotalValue
+        private double _totalPrice;
+        public double TotalPrice
         {
             get
             {
-                return _totalValue;
+                return _totalPrice;
             }
             set
             {
-                _totalValue = value;
-                OnPropertyChanged(nameof(TotalValue));
+                _totalPrice = value;
+                OnPropertyChanged(nameof(TotalPrice));
             }
         }
-        private DateTime _finalDate;
-        public DateTime FinalDate
+        private string _finalDate;
+        public string FinalDate
         {
             get
             {
@@ -137,11 +140,25 @@ namespace Avaliacao.ViewModels
                 OnPropertyChanged(nameof(FinalDate));
             }
         }
+        private void OnDateChanged()
+        {
+            FinalDate = InitialDate.AddDays(7).ToString("d");
+        }
+        private void OnPriceChanged()
+        {
+            CalculateTotal();
+        }
+        private void CalculateTotal()
+        {
+            TotalPrice = ServicePrice + TravelPrice;
+        }
 
         public ICommand SubmitCommand { get; }
-        public CreateOrderViewModel(Company company)
+        public ICommand ListOrderCommand { get; }
+        public CreateOrderViewModel(Company company, NavigationService orderViewNavigationService)
         {
-            SubmitCommand = new SubmitCommand(this, company);
+            SubmitCommand = new SubmitCommand(this, company, orderViewNavigationService);
+            ListOrderCommand = new NavigateCommand(orderViewNavigationService);
         }
 
     }

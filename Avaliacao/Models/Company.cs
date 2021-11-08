@@ -20,6 +20,10 @@ namespace Avaliacao.Models
         //{
         //    return _costumer.GetOrderByInspector(inspectorName);
         //}
+        public IEnumerable<OrderService> GetAllOrderServices()
+        {
+            return _costumer.GetAllOrders();
+        }
 
         public void CreateOrderService (OrderService order)
         {

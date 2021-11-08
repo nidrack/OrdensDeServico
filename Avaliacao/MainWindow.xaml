@@ -6,11 +6,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Avaliacao" 
     xmlns:views="clr-namespace:Avaliacao.Views"
+    xmlns:vms="clr-namespace:Avaliacao.ViewModels"
     mc:Ignorable="d"
     Title="MainWindow" 
     Height="450" 
     Width="800">
     <Grid>
-        <views:CreateOrderView DataContext="{Binding CurrentViewModel}"/>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:CreateOrderViewModel}">
+                <views:CreateOrderView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ListOrderViewModel}">
+                <views:ListOrderView />
+            </DataTemplate>
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>
